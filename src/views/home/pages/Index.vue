@@ -8,6 +8,7 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref } from '@vue/composition-api'
 import TestButton from '../components/TestButton.vue'
+import api from '@/services/index'
 export default defineComponent({
   components: {
     TestButton
@@ -26,6 +27,8 @@ export default defineComponent({
     }
 
     onMounted(async () => {
+      const res: any = await api.testAxios()
+      console.log(res.data.title)
       text.value = await textChange()
     })
 
